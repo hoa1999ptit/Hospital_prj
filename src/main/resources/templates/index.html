@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Doctor Management System</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link th:if="${mode == 'development'}" rel="stylesheet" href="../static/bootstrap.css"
+		th:href="@{/bootstrap.css}" />
+	<link th:if="${mode == 'production'}" rel="stylesheet" href="../static/bootstrap.min.css"
+		th:href="@{/bootstrap.min.css}" />
+	<script type="text/javascript" src="../static/angular.min.js" th:src="@{/angular.min.js}"></script>
+	<script type="text/javascript" src="../static/app/app.module.js" th:src="@{/app/app.module.js}"></script>
+	<script type="text/javascript" src="../static/app/nurses.controller.js"
+		th:src="@{/app/nurses.controller.js}"></script>
+</head>
+
+<body ng-app="app" ng-controller="NursesController as vm">
+	<div class="container my-2">
+		<h1>Doctors List</h1>
+		<a th:href="@{/showNewDoctorForm}" class="btn btn-primary btn-sm mb-3"> Add Doctor </a>
+
+		<table border="1" class="table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th> Doctor Id </th>
+					<th> Doctor Name </th>
+					<th> Doctor CMT </th>
+					<th> Actions </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="doctor : ${listDoctors}">
+					<td th:text="${doctor.id}"></td>
+					<td th:text="${doctor.name}"></td>
+					<td th:text="${doctor.cmt}"></td>
+					<td>
+						<a th:href="@{/showFormForUpdate/{id}(id=${doctor.id})}" class="btn btn-primary">Update</a>
+						<a th:href="@{/deleteDoctor/{id}(id=${doctor.id})}" class="btn btn-danger">Delete</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<button ng-click="vm.getAllNurses()" type="button" class="btn btn-default">All</button>
+	</div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th> Nurse Id </th>
+				<th> Nurse Name </th>
+				<th> Nurse CMT </th>
+				<th> Actions </th>
+				<th style="width: 90px"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="nurse in vm.nurses">
+				<td>{{nurse.id}}</td>
+				<td>{{nurse.name}}</td>
+				<td>{{nurse.cmt}}</td>
+
+				<td>
+					<button class="btn btn-danger" ng-click="vm.removeNurse(nurse.id)">Update</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+</body>
+
+</html>
