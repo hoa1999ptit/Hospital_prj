@@ -31,6 +31,14 @@ public class Patient {
 	@Column(name = "phone")
 	private String phone;
 
+//	public Patient(String name, String idcard, String birthday, String address, String phone) {
+//		this.name = name;
+//		this.idcard = idcard;
+//		this.birthday = birthday;
+//		this.address = address;
+//		this.phone = phone;
+//	}
+	
 	public long getId() {
 		return id;
 	}

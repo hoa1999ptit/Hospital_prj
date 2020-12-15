@@ -18,8 +18,8 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
 		<div class="container">
 			<a class="navbar-brand" href="/">
-				<img src="https://cdn.pixabay.com/photo/2012/04/12/12/59/red-cross-29930_960_720.png" href="/"
-					alt="Hospital" width="70" height="60">
+				<img src="https://cdn.pixabay.com/photo/2012/04/12/12/59/red-cross-29930_960_720.png" href="/" alt="Hospital"
+					width="70" height="60">
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
 				aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,10 +32,10 @@
 							<span class="sr-only"></span>
 						</a>
 					</li>
-					<li class="nav-item active">
+					<li class="nav-item">
 						<a class="nav-link" href="/nurse">Nurses</a>
 					</li>
-					<li class="nav-item">
+					<li class="nav-item active">
 						<a class="nav-link" href="/patient">Patients</a>
 					</li>
 					<li class="nav-item">
@@ -48,15 +48,13 @@
 
 	<!-- Page Content -->
 	<div class="container">
-		<h3 class="text-dark">Nurses Page</h3>
+		<h3 class="text-dark">Patients Page</h3>
 		<div>
-			<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal1"
-				style="margin-bottom: 20px">
-				Add Nurse
+			<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal1" style="margin-bottom: 20px">
+				Add Patient
 			</button>
-			<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal2"
-				style="margin-bottom: 20px;">Get All
-				Nurses</button>
+			<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal2" style="margin-bottom: 20px;">Get All
+					Patients</button>
 			<!-- The Modal -->
 			<div class="modal" id="myModal1">
 				<div class="modal-dialog">
@@ -74,15 +72,15 @@
 							<div class="form-group">
 								<label class="control-label">Name</label>
 								<div>
-									<input type="text" class="form-control input-lg" value="">
+									<input type="text"class="form-control input-lg" value="">
 								</div>
 								<label class="control-label">Adress</label>
 								<div>
-									<input type="text" class="form-control input-lg" value="">
+									<input type="text"class="form-control input-lg" value="">
 								</div>
 								<label class="control-label">ID Card</label>
 								<div>
-									<input type="text" class="form-control input-lg" value="">
+									<input type="text"class="form-control input-lg" value="">
 								</div>
 								<label class="control-label">Birthday</label>
 								<div>
@@ -90,15 +88,7 @@
 								</div>
 								<label class="control-label">Phone</label>
 								<div>
-									<input type="text" class="form-control input-lg" value="">
-								</div>
-								<label class="control-label">Seniority</label>
-								<div>
-									<input type="text" class="form-control input-lg" value="">
-								</div>
-								<label class="control-label">Literacy</label>
-								<div>
-									<input type="text" class="form-control input-lg" value="">
+									<input type="text"class="form-control input-lg" value="">
 								</div>
 							</div>
 						</div>
@@ -113,6 +103,7 @@
 				</div>
 			</div>
 
+			<!-- The Modal -->
 			<div class="modal" id="myModal2">
 				<div class="modal-dialog">
 					<div class="modal-content">
@@ -147,14 +138,6 @@
 								<div>
 									<input type="text"class="form-control input-lg" value="">
 								</div>
-								<label class="control-label">Seniority</label>
-								<div>
-									<input type="text"class="form-control input-lg" value="">
-								</div>
-								<label class="control-label">Literacy</label>
-								<div>
-									<input type="text"class="form-control input-lg" value="">
-								</div>
 							</div>
 						</div>
 
@@ -168,8 +151,9 @@
 				</div>
 			</div>
 
-			<div>
 
+			<div>
+				
 				<table class="table table-bordered table-hover">
 					<thead class="thead-light">
 						<tr>
@@ -178,15 +162,11 @@
 							<th>ID Card</th>
 							<th>Birthday</th>
 							<th>Phone</th>
-							<th>Seniority</th>
-							<th>Literacy</th>
 							<th style="width : 160px">Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td></td>
-							<td></td>
 							<td></td>
 							<td></td>
 							<td></td>

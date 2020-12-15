@@ -5,58 +5,56 @@
 	<meta charset="utf-8" />
 	<title>Doctor Management System</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 	<script src="../app/controller.js"></script>
 </head>
 
 <body>
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-		<div class="container">
-			<a class="navbar-brand" href="/">
-				<img src="https://cdn.pixabay.com/photo/2012/04/12/12/59/red-cross-29930_960_720.png" href="/"
-					alt="Hospital" width="70" height="60">
-			</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-				aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="/doctor">Doctors
-							<span class="sr-only"></span>
-						</a>
-					</li>
-					<li class="nav-item active">
-						<a class="nav-link" href="/nurse">Nurses</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="/patient">Patients</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="/medicine">Medicines</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="https://cdn.pixabay.com/photo/2012/04/12/12/59/red-cross-29930_960_720.png" href="/" alt="Hospital"
+                    width="70" height="60">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/doctor">Doctors
+                            <span class="sr-only"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="nurse">Nurses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/patient">Patients</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/medicine">Medicines</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-	<!-- Page Content -->
+    <!-- Page Content -->
 	<div class="container">
-		<h3 class="text-dark">Nurses Page</h3>
+		<h3 class="text-dark">Doctors Page</h3>
 		<div>
-			<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal1"
-				style="margin-bottom: 20px">
-				Add Nurse
+			<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal1" style="margin-bottom: 20px">
+				Add Doctor
 			</button>
-			<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal2"
-				style="margin-bottom: 20px;">Get All
-				Nurses</button>
+			<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal2" style="margin-bottom: 20px;">Get All
+					Doctors</button>
 			<!-- The Modal -->
 			<div class="modal" id="myModal1">
 				<div class="modal-dialog">
@@ -64,7 +62,7 @@
 
 						<!-- Modal Header -->
 						<div class="modal-header">
-							<h4 class="modal-title">Add Patient</h4>
+							<h4 class="modal-title">Add Doctor</h4>
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
 						</div>
 
@@ -74,31 +72,35 @@
 							<div class="form-group">
 								<label class="control-label">Name</label>
 								<div>
-									<input type="text" class="form-control input-lg" value="">
+									<input type="text"class="form-control input-lg" value="">
 								</div>
 								<label class="control-label">Adress</label>
 								<div>
-									<input type="text" class="form-control input-lg" value="">
+									<input type="text"class="form-control input-lg" value="">
 								</div>
 								<label class="control-label">ID Card</label>
 								<div>
-									<input type="text" class="form-control input-lg" value="">
+									<input type="text"class="form-control input-lg" value="">
 								</div>
 								<label class="control-label">Birthday</label>
 								<div>
 									<input type="date" class="form-control input-lg" value="">
 								</div>
-								<label class="control-label">Phone</label>
+								<label class="control-label">Occupation level</label>
 								<div>
-									<input type="text" class="form-control input-lg" value="">
+									<input type="text"class="form-control input-lg" value="">
 								</div>
 								<label class="control-label">Seniority</label>
 								<div>
-									<input type="text" class="form-control input-lg" value="">
+									<input type="text"class="form-control input-lg" value="">
 								</div>
 								<label class="control-label">Literacy</label>
 								<div>
-									<input type="text" class="form-control input-lg" value="">
+									<input type="text"class="form-control input-lg" value="">
+								</div>
+								<label class="control-label">Expertise</label>
+								<div>
+									<input type="text"class="form-control input-lg" value="">
 								</div>
 							</div>
 						</div>
@@ -119,7 +121,7 @@
 
 						<!-- Modal Header -->
 						<div class="modal-header">
-							<h4 class="modal-title">Add Patient</h4>
+							<h4 class="modal-title">Add Doctor</h4>
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
 						</div>
 
@@ -143,7 +145,7 @@
 								<div>
 									<input type="date" class="form-control input-lg" value="">
 								</div>
-								<label class="control-label">Phone</label>
+								<label class="control-label">Occupation level</label>
 								<div>
 									<input type="text"class="form-control input-lg" value="">
 								</div>
@@ -152,6 +154,10 @@
 									<input type="text"class="form-control input-lg" value="">
 								</div>
 								<label class="control-label">Literacy</label>
+								<div>
+									<input type="text"class="form-control input-lg" value="">
+								</div>
+								<label class="control-label">Expertise</label>
 								<div>
 									<input type="text"class="form-control input-lg" value="">
 								</div>
@@ -169,7 +175,7 @@
 			</div>
 
 			<div>
-
+				
 				<table class="table table-bordered table-hover">
 					<thead class="thead-light">
 						<tr>
@@ -177,14 +183,16 @@
 							<th>Adress</th>
 							<th>ID Card</th>
 							<th>Birthday</th>
-							<th>Phone</th>
+							<th>Occupation level</th>
 							<th>Seniority</th>
 							<th>Literacy</th>
+							<th>Expertise</th>
 							<th style="width : 160px">Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
+							<td></td>
 							<td></td>
 							<td></td>
 							<td></td>
@@ -204,7 +212,7 @@
 		</div>
 	</div>
 	<!-- /.container -->
-
+	
 </body>
 
 </html>

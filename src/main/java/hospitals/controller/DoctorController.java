@@ -1,61 +1,75 @@
 package hospitals.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.jsondoc.core.annotation.ApiMethod;
+import org.jsondoc.core.annotation.ApiPathParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import exception.ResourceNotFoundException;
 import hospitals.model.Doctor;
+import hospitals.repository.DoctorRepository;
 import hospitals.service.DoctorService;
 
-@Controller
-//@CrossOrigin(origins = "*")
+@RestController
+@RequestMapping(value = "/api/doctors")
 
 public class DoctorController {
+	
+	private DoctorRepository doctorRepo;
 	@Autowired
-	private DoctorService doctorService;
 	
-	//display list of doctor
-	@GetMapping("/")
-	public String viewHomePage(Model model) {
-		model.addAttribute("listDoctors", doctorService.getAllDoctors());
-		return "nurse";
+	
+	//private DoctorService doctorService;
+	
+	public DoctorController(@RequestBody DoctorRepository doctorRepo) {
+		this.doctorRepo=doctorRepo;
 	}
 	
-	@GetMapping("/showNewDoctorForm")
-	public String showNewDoctorForm(Model model) {
-		//create model attribute to bind form data
-		Doctor doctor = new Doctor();
-		model.addAttribute("doctor", doctor);
-		return "new_doctor";
+	@GetMapping(value = "/getAll")
+	public List<Doctor> getAllDoctors(){
+		return doctorRepo.findAll();
 	}
 	
-	@PostMapping("/saveDoctor")
-	public String saveDoctor(@ModelAttribute("doctor") Doctor doctor) {
-		//save Doctor to database
-		doctorService.saveDoctor(doctor);
-		return "redirect:/";
+	@RequestMapping(value="/update/{id}",method = RequestMethod.PUT)
+	public List<Doctor> updateDoctor(@ApiPathParam(name="id" )@PathVariable(value = "id") long id, 
+			@RequestBody Doctor doctor) throws ResourceNotFoundException{
+		 Doctor _doctor =doctorRepo.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Doctor not found for this id :"+id));
+		 //_doctor.setId(doctor.getId());
+		 _doctor.setName(doctor.getName());
+		 _doctor.setBirthday(doctor.getBirthday());
+		 _doctor.setIdcard(doctor.getIdcard());
+		 _doctor.setAddress(doctor.getAddress());
+		 _doctor.setJoblv(doctor.getJoblv());
+		 _doctor.setLiteracy(doctor.getLiteracy());
+		 _doctor.setSeniority(doctor.getSeniority());
+		 _doctor.setExpertise(doctor.getExpertise());
+		 doctorRepo.save(_doctor);
+		 return doctorRepo.findAll();
+		 
 	}
-	
-	@GetMapping("/showFormForUpdate/{id}")
-	public String showFormForUpdate(@PathVariable (value = "id") long id, Model model) {
-		//get doctor from the service
-		Doctor doctor = doctorService.getDoctorById(id);
-		
-		//set doctor as a model attribute to pre-populate the form
-		model.addAttribute("doctor", doctor);
-		return "update_doctor";
-	}
-	
-	@GetMapping("/deleteDoctor/{id}")
-	public String deleteDoctor(@PathVariable (value="id") long id) {
-		//call delete doctor method
-		this.doctorService.deleteDoctorById(id);
-		return "redirect:/";
-	}
+	@RequestMapping(value = "/create", method = RequestMethod.POST)
+	public List<Doctor> create(@RequestBody Doctor doctor){
+		doctorRepo.save(doctor);
+
+        return doctorRepo.findAll();
+    }
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	@ApiMethod(description = "Remove the doctor with the provided ID from the database")
+    public List<Doctor> removeDoctor(@ApiPathParam(name = "id") @PathVariable long id){
+        doctorRepo.deleteById(id);
+
+        return doctorRepo.findAll();
+    }
+
 }

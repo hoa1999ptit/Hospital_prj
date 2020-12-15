@@ -12,20 +12,40 @@ import javax.persistence.Table;
 public class Nurse {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
 	@Column(name = "name")
 	private String name;
+
+	@Column(name = "idcard")
+	private String idcard;
 	
-	@Column(name = "cmt")
-	private String cmt;
+	@Column(name = "seniority")//thâm niên
+	private String seniority;
+	
+	@Column(name = "literacy")//trình độ
+	private String literacy;
+	
+	@Column(name = "birthday")
+	private String birthday;
+	
+	@Column(name = "address")
+	private String address;
+	
+	@Column(name = "phone")
+	private String phone;
 	
 	public Nurse() {}
-	public Nurse(String name, String cmt) {
-		this.name = name;
-		this.cmt = cmt;
-	}
+//	public Nurse(String name, String idcard, long seniority, String literacy, String birthday, String address, String phone) {
+//		this.name = name;
+//		this.idcard = idcard;
+//		this.seniority = seniority;
+//		this.literacy = literacy;
+//		this.birthday = birthday;
+//		this.address = address;
+//		this.phone = phone;
+//	}
 	public long getId() {
 		return id;
 	}
@@ -38,11 +58,41 @@ public class Nurse {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getCmt() {
-		return cmt;
+	public String getIdcard() {
+		return idcard;
 	}
-	public void setCmt(String cmt) {
-		this.cmt = cmt;
+	public void setIdcard(String idcard) {
+		this.idcard = idcard;
+	}
+	public String getSeniority() {
+		return seniority;
+	}
+	public void setSeniority(String seniority) {
+		this.seniority = seniority;
+	}
+	public String getLiteracy() {
+		return literacy;
+	}
+	public void setLiteracy(String literacy) {
+		this.literacy = literacy;
+	}
+	public String getBirthday() {
+		return birthday;
+	}
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	
 	

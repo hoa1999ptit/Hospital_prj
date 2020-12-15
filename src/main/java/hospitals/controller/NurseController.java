@@ -21,64 +21,54 @@ import hospitals.repository.NurseRepository;
 import hospitals.service.NurseService;
 
 @RestController
-@CrossOrigin
+@RequestMapping(value = "/api/nurses")
 
 public class NurseController {
 	
-	List<Nurse> cust=new ArrayList<Nurse>();
 	private NurseRepository nurseRepo;
-	
 	@Autowired
-	private NurseService nurseService;
+	
+	
+	//private NurseService nurseService;
 	
 	public NurseController(@RequestBody NurseRepository nurseRepo) {
 		this.nurseRepo=nurseRepo;
 	}
 	
-	@GetMapping(value = "/all")
+	@GetMapping(value = "/getAll")
 	public List<Nurse> getAllNurses(){
-		return nurseService.getNurse();
+		return nurseRepo.findAll();
 	}
-	@RequestMapping(value = "/getallcustomer", method = RequestMethod.GET)
-	  public List<Nurse> getResource(){
-		cust=nurseService.getNurse();
-	      return cust;
-	  }
-	@RequestMapping(value="/{id}/update",method = RequestMethod.PUT)
-	/*public List<Nurse> updateNurse(@ApiPathParam(name = "id") @PathVariable long id,
+	
+	@RequestMapping(value="/update/{id}",method = RequestMethod.PUT)
+	public List<Nurse> updateNurse(@ApiPathParam(name="id" )@PathVariable(value = "id") long id, 
 			@RequestBody Nurse nurse) throws ResourceNotFoundException{
-		 nurse=nurseRepo.findById(id)
+		 Nurse _nurse =nurseRepo.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Nurse not found for this id :"+id));
-		 
-		 nurseRepo.save(nurse);
+		 //_nurse.setId(nurse.getId());
+		 _nurse.setName(nurse.getName());
+		 _nurse.setBirthday(nurse.getBirthday());
+		 _nurse.setIdcard(nurse.getIdcard());
+		 _nurse.setAddress(nurse.getAddress());
+		 _nurse.setPhone(nurse.getPhone());
+		 _nurse.setLiteracy(nurse.getLiteracy());
+		 _nurse.setSeniority(nurse.getSeniority());
+		 nurseRepo.save(_nurse);
 		 return nurseRepo.findAll();
 		 
-	}*/
-	public void updateNurse(@PathVariable("id") long id,@RequestBody Nurse nurse) {
-		nurseService.updateNurse(nurse);
 	}
-	
-	@RequestMapping(value = "/postcustomer", method = RequestMethod.POST)
-	/*public List<Nurse> create(@RequestBody Nurse nurse){
+	@RequestMapping(value = "/create", method = RequestMethod.POST)
+	public List<Nurse> create(@RequestBody Nurse nurse){
 		nurseRepo.save(nurse);
 
         return nurseRepo.findAll();
-    }*/
-	public List<Nurse> postcustomer(@RequestBody Nurse nurse) {
-		nurseRepo.save(nurse);
-
-        return nurseRepo.findAll();
-	}
-	
-	
-	@RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
-    /*(public List<Nurse> removeNurse(@ApiPathParam(name = "id") @PathVariable long id){
+    }
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	@ApiMethod(description = "Remove the nurse with the provided ID from the database")
+    public List<Nurse> removeNurse(@ApiPathParam(name = "id") @PathVariable long id){
         nurseRepo.deleteById(id);
 
         return nurseRepo.findAll();
-    }*/
-	public void deleteNurse(@PathVariable("id")long id) {
-		nurseService.deleteNurse(id);
-	}
+    }
 
 }
