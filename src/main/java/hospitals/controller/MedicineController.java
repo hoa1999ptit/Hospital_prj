@@ -45,7 +45,7 @@ public class MedicineController {
 				.orElseThrow(() -> new ResourceNotFoundException("Medicine not found for this id :"+id));
 		 //_medicine.setId(medicine.getId());
 		 _medicine.setName(medicine.getName());
-		 _medicine.setCost(medicine.getCost());
+		 _medicine.setPrice(medicine.getPrice());
 
 		 medicineRepo.save(_medicine);
 		 return medicineRepo.findAll();
