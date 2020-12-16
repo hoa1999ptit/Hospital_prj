@@ -10,10 +10,10 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-	<script src="../app/controller.js"></script>
+	<script src="../app/Patient.js"></script>
 </head>
 
-<body>
+<body ng-app="PatientManagement" ng-controller="PatientController">
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
 		<div class="container">
@@ -67,35 +67,35 @@
 						</div>
 
 						<!-- Modal body -->
-						<div class="modal-body">
+						<div class="modal-body" >
 							<input type="hidden" name="_token" value="">
-							<div class="form-group">
+							<div class="form-group" >
 								<label class="control-label">Name</label>
 								<div>
-									<input type="text"class="form-control input-lg" value="">
+									<input type="text" ng-model="pat.name" class="form-control input-lg" value="">
 								</div>
 								<label class="control-label">Adress</label>
 								<div>
-									<input type="text"class="form-control input-lg" value="">
+									<input type="text" ng-model="pat.adress" class="form-control input-lg" value="">
 								</div>
 								<label class="control-label">ID Card</label>
 								<div>
-									<input type="text"class="form-control input-lg" value="">
+									<input type="text" ng-model="pat.idcard" class="form-control input-lg" value="">
 								</div>
 								<label class="control-label">Birthday</label>
 								<div>
-									<input type="date" class="form-control input-lg" value="">
+									<input type="date" ng-model="pat.birthday" class="form-control input-lg" value="">
 								</div>
 								<label class="control-label">Phone</label>
 								<div>
-									<input type="text"class="form-control input-lg" value="">
+									<input type="text" ng-model="pat.phone" class="form-control input-lg" value="">
 								</div>
 							</div>
 						</div>
 
 						<!-- Modal footer -->
 						<div class="modal-footer">
-							<button type="button" class="btn btn-danger" data-dismiss="modal">Save</button>
+							<button type="button" ng-click="create()" class="btn btn-danger" data-dismiss="modal">Save</button>
 							<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 						</div>
 
@@ -166,15 +166,15 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+						<tr ng-repeat="patient in patients">
+							<td>{{ patient.name }}</td>
+							<td>{{ patient.adress }}</td>
+							<td>{{ patient.idcard }}</td>
+							<td>{{ patient.birthday }}</td>
+							<td>{{ patient.phone }}</td>
 							<td>
 								<button class="btn btn-danger" data-toggle="modal" data-target="#myModal2">Edit</button>
-								<button class="btn btn-danger">Delete</button>
+								<button class="btn btn-danger" ng-click="delete(patient)">Delete</button>
 							</td>
 						</tr>
 					</tbody>
