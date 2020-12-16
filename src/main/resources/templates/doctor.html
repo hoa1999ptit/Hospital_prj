@@ -5,15 +5,15 @@
 	<meta charset="utf-8" />
 	<title>Doctor Management System</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-	<script src="../app/controller.js"></script>
+	<script src="../app/Doctor.js"></script>
 </head>
 
-<body>
+<body ng-app="DoctorManagement" ng-controller="DoctorController">
 	<!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
         <div class="container">
@@ -53,8 +53,6 @@
 			<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal1" style="margin-bottom: 20px">
 				Add Doctor
 			</button>
-			<button type="button" class="btn btn-dark" style="margin-bottom: 20px;">Get All
-					Doctors</button>
 			<!-- The Modal -->
 			<div class="modal" id="myModal1">
 				<div class="modal-dialog">
@@ -72,42 +70,42 @@
 							<div class="form-group">
 								<label class="control-label">Name</label>
 								<div>
-									<input type="text"class="form-control input-lg" value="">
+									<input type="text" ng-model="doctor.name" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 								<label class="control-label">Adress</label>
 								<div>
-									<input type="text"class="form-control input-lg" value="">
+									<input type="text" ng-model="doctor.address" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 								<label class="control-label">ID Card</label>
 								<div>
-									<input type="text"class="form-control input-lg" value="">
+									<input type="text" ng-model="doctor.idcard" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 								<label class="control-label">Birthday</label>
 								<div>
-									<input type="date" class="form-control input-lg" value="">
+									<input type="date" ng-model="doctor.birthday" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 								<label class="control-label">Occupation level</label>
 								<div>
-									<input type="text"class="form-control input-lg" value="">
+									<input type="text" ng-model="doctor.joblv" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 								<label class="control-label">Seniority</label>
 								<div>
-									<input type="text"class="form-control input-lg" value="">
+									<input type="text" ng-model="doctor.seniority" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 								<label class="control-label">Literacy</label>
 								<div>
-									<input type="text"class="form-control input-lg" value="">
+									<input type="text" ng-model="doctor.literacy" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 								<label class="control-label">Expertise</label>
 								<div>
-									<input type="text"class="form-control input-lg" value="">
+									<input type="text" ng-model="doctor.expertise" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 							</div>
 						</div>
 
 						<!-- Modal footer -->
 						<div class="modal-footer">
-							<button type="button" class="btn btn-danger" data-dismiss="modal">Save</button>
+							<button type="button" ng-click="create()" class="btn btn-danger" data-dismiss="modal">Save</button>
 							<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 						</div>
 
@@ -131,42 +129,42 @@
 							<div class="form-group">
 								<label class="control-label">Name</label>
 								<div>
-									<input type="text"class="form-control input-lg" value="">
+									<input type="text" ng-model="doctor.name" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 								<label class="control-label">Adress</label>
 								<div>
-									<input type="text"class="form-control input-lg" value="">
+									<input type="text" ng-model="doctor.address" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 								<label class="control-label">ID Card</label>
 								<div>
-									<input type="text"class="form-control input-lg" value="">
+									<input type="text" ng-model="doctor.idcard" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 								<label class="control-label">Birthday</label>
 								<div>
-									<input type="date" class="form-control input-lg" value="">
+									<input type="date" ng-model="doctor.birthday" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 								<label class="control-label">Occupation level</label>
 								<div>
-									<input type="text"class="form-control input-lg" value="">
+									<input type="text" ng-model="doctor.joblv" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 								<label class="control-label">Seniority</label>
 								<div>
-									<input type="text"class="form-control input-lg" value="">
+									<input type="text" ng-model="doctor.seniority" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 								<label class="control-label">Literacy</label>
 								<div>
-									<input type="text"class="form-control input-lg" value="">
+									<input type="text" ng-model="doctor.literacy" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 								<label class="control-label">Expertise</label>
 								<div>
-									<input type="text"class="form-control input-lg" value="">
+									<input type="text" ng-model="doctor.expertise" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 							</div>
 						</div>
 
 						<!-- Modal footer -->
 						<div class="modal-footer">
-							<button type="button" class="btn btn-danger" data-dismiss="modal">Save</button>
+							<button type="button" ng-click = "submit()" class="btn btn-danger" data-dismiss="modal">Save</button>
 							<button type="button" class="btn btn-danger"  data-dismiss="modal">Close</button>
 						</div>
 
@@ -191,18 +189,18 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+						<tr ng-repeat = "doctor in doctors">
+							<td>{{ doctor.name }}</td>
+							<td>{{ doctor.address }}</td>
+							<td>{{ doctor.idcard }}</td>
+							<td>{{ doctor.birthday }}</td>
+							<td>{{ doctor.joblv }}</td>
+							<td>{{ doctor.seniority }}</td>
+							<td>{{ doctor.literacy }}</td>
+							<td>{{ doctor.expertise }}</td>
 							<td>
-								<button class="btn btn-danger"  data-toggle="modal" data-target="#myModal2" >Edit</button>
-								<button class="btn btn-danger">Delete</button>
+								<button class="btn btn-danger" ng-click="edit(doctor)" data-toggle="modal" data-target="#myModal2" >Edit</button>
+								<button class="btn btn-danger" ng-click="delete(doctor)">Delete</button>
 							</td>
 						</tr>
 					</tbody>

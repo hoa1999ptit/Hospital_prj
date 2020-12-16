@@ -18,8 +18,8 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
 		<div class="container">
 			<a class="navbar-brand" href="/">
-				<img src="https://cdn.pixabay.com/photo/2012/04/12/12/59/red-cross-29930_960_720.png" href="/" alt="Hospital"
-					width="70" height="60">
+				<img src="https://cdn.pixabay.com/photo/2012/04/12/12/59/red-cross-29930_960_720.png" href="/"
+					alt="Hospital" width="70" height="60">
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
 				aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,11 +50,10 @@
 	<div class="container">
 		<h3 class="text-dark">Patients Page</h3>
 		<div>
-			<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal1" style="margin-bottom: 20px">
+			<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal1"
+				style="margin-bottom: 20px">
 				Add Patient
 			</button>
-			<button type="button" class="btn btn-dark" style="margin-bottom: 20px;">Get All
-					Patients</button>
 			<!-- The Modal -->
 			<div class="modal" id="myModal1">
 				<div class="modal-dialog">
@@ -67,35 +66,36 @@
 						</div>
 
 						<!-- Modal body -->
-						<div class="modal-body" >
+						<div class="modal-body">
 							<input type="hidden" name="_token" value="">
-							<div class="form-group" >
+							<div class="form-group">
 								<label class="control-label">Name</label>
 								<div>
-									<input type="text" ng-model="pat.name" class="form-control input-lg" value="">
+									<input type="text" ng-model="patient.name" class="form-control input-lg" onfocus="this.value=''">
 								</div>
-								<label class="control-label">Adress</label>
+								<label class="control-label">Address</label>
 								<div>
-									<input type="text" ng-model="pat.adress" class="form-control input-lg" value="">
+									<input type="text" ng-model="patient.address" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 								<label class="control-label">ID Card</label>
 								<div>
-									<input type="text" ng-model="pat.idcard" class="form-control input-lg" value="">
+									<input type="text" ng-model="patient.idcard" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 								<label class="control-label">Birthday</label>
 								<div>
-									<input type="date" ng-model="pat.birthday" class="form-control input-lg" value="">
+									<input type="date" id="datePicker" ng-model="patient.birthday" class="form-control input-lg">
 								</div>
 								<label class="control-label">Phone</label>
 								<div>
-									<input type="text" ng-model="pat.phone" class="form-control input-lg" value="">
+									<input type="text" ng-model="patient.phone" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 							</div>
 						</div>
 
 						<!-- Modal footer -->
 						<div class="modal-footer">
-							<button type="button" ng-click="create()" class="btn btn-danger" data-dismiss="modal">Save</button>
+							<button type="button" ng-click="create()" class="btn btn-danger"
+								data-dismiss="modal">Save</button>
 							<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 						</div>
 
@@ -120,30 +120,30 @@
 							<div class="form-group">
 								<label class="control-label">Name</label>
 								<div>
-									<input type="text"class="form-control input-lg" value="">
+									<input type="text" ng-model="patient.name" class="form-control input-lg" onfocus="this.value=''">
 								</div>
-								<label class="control-label">Adress</label>
+								<label class="control-label">Address</label>
 								<div>
-									<input type="text"class="form-control input-lg" value="">
+									<input type="text" ng-model="patient.address" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 								<label class="control-label">ID Card</label>
 								<div>
-									<input type="text"class="form-control input-lg" value="">
+									<input type="text" ng-model="patient.idcard" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 								<label class="control-label">Birthday</label>
 								<div>
-									<input type="date" class="form-control input-lg" value="">
+									<input type="date" id="datePicker" ng-model="patient.birthday" class="form-control input-lg">
 								</div>
 								<label class="control-label">Phone</label>
 								<div>
-									<input type="text"class="form-control input-lg" value="">
+									<input type="text" ng-model="patient.phone" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 							</div>
 						</div>
 
 						<!-- Modal footer -->
 						<div class="modal-footer">
-							<button type="button" class="btn btn-danger" data-dismiss="modal">Save</button>
+							<button type="button" ng-click = "submit()"  class="btn btn-danger" data-dismiss="modal">Save</button>
 							<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 						</div>
 
@@ -153,7 +153,7 @@
 
 
 			<div>
-				
+
 				<table class="table table-bordered table-hover">
 					<thead class="thead-light">
 						<tr>
@@ -168,12 +168,12 @@
 					<tbody>
 						<tr ng-repeat="patient in patients">
 							<td>{{ patient.name }}</td>
-							<td>{{ patient.adress }}</td>
+							<td>{{ patient.address }}</td>
 							<td>{{ patient.idcard }}</td>
 							<td>{{ patient.birthday }}</td>
 							<td>{{ patient.phone }}</td>
 							<td>
-								<button class="btn btn-danger" data-toggle="modal" data-target="#myModal2">Edit</button>
+								<button class="btn btn-danger" ng-click="edit(patient)" data-toggle="modal" data-target="#myModal2">Edit</button>
 								<button class="btn btn-danger" ng-click="delete(patient)">Delete</button>
 							</td>
 						</tr>

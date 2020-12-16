@@ -1,5 +1,7 @@
 package hospitals.model;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,7 +36,7 @@ public class Doctor {
 	private String literacy;
 
 	@Column(name = "birthday") // ngày sinh
-	private String birthday;
+	private Date birthday;
 
 	@Column(name = "address") // địa chỉ
 	private String address;
@@ -95,11 +97,11 @@ public class Doctor {
 		this.literacy = literacy;
 	}
 
-	public String getBirthday() {
+	public Date getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(String birthday) {
+	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
 

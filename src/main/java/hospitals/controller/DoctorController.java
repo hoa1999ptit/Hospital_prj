@@ -64,7 +64,7 @@ public class DoctorController {
 
         return doctorRepo.findAll();
     }
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
 	@ApiMethod(description = "Remove the doctor with the provided ID from the database")
     public List<Doctor> removeDoctor(@ApiPathParam(name = "id") @PathVariable long id){
         doctorRepo.deleteById(id);

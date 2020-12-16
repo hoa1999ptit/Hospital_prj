@@ -1,5 +1,7 @@
 package hospitals.model;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,7 +30,7 @@ public class Nurse {
 	private String literacy;
 	
 	@Column(name = "birthday")
-	private String birthday;
+	private Date birthday;
 	
 	@Column(name = "address")
 	private String address;
@@ -76,10 +78,10 @@ public class Nurse {
 	public void setLiteracy(String literacy) {
 		this.literacy = literacy;
 	}
-	public String getBirthday() {
+	public Date getBirthday() {
 		return birthday;
 	}
-	public void setBirthday(String birthday) {
+	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
 	public String getAddress() {

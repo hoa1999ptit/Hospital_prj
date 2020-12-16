@@ -1,46 +1,59 @@
+
 var app = angular.module("PatientManagement", []);
 
 // Controller Part
 app.controller("PatientController", function ($scope, $http) {
   $scope.patients = [];
-  $scope.pat = {
+  $scope.patient = {
     name: "",
     idcard: "",
     birthday: "",
     address: "",
     phone: ""
   };
+  var _id;
   _refreshPatientData();
 $scope.create = function() {
         $http({
             method: "POST",
             url: '/api/patients/create',
-            data: JSON.stringify($scope.pat),
+            data: JSON.stringify($scope.patient),
             headers: {
                 'Content-Type': 'application/json'
             }
         }).then(_success, _error);
     };
 
-  $scope.delete = function (pat) {
+  $scope.delete = function (patient) {
     $http({
       method: 'DELETE',
-      url: '/api/patients/delete/' + pat.id
+      url: '/api/patients/delete/' + patient.id
     }).then(_success, _error);
   };
 
+
+  $scope.submit = function() {
+       $http({
+            method: "PUT",
+            url: '/api/patients/update/' + _id,
+            data: JSON.stringify($scope.patient),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(_success, _error);
+    };
+
   // In case of edit
-  $scope.edit = function (acc) {
-    $scope.acc.id = acc.id;
-    $scope.acc.name = acc.name;
-    $scope.acc.phone = acc.phone;
-    $scope.acc.position = acc.position;
+  $scope.edit = function (patient) {
+    _id = patient.id;
+    $scope.patient.name = patient.name;
+    $scope.patient.idcard = patient.idcard;
+    //$scope.patient.birthday = patient.birthday;
+    $scope.patient.address = patient.address;
+    $scope.patient.phone = patient.phone;
 
   };
 
-  // Private Method  
-  // HTTP GET- get all employees collection
-  // Call: http://localhost:8080/employees
   function _refreshPatientData() {
     $http({
       method: 'GET',
@@ -57,6 +70,7 @@ $scope.create = function() {
 
   function _success(res) {
         _refreshPatientData();
+        _clearFormData();
     }
 
   function _error(res) {
@@ -67,11 +81,10 @@ $scope.create = function() {
     alert("Error: " + status + ":" + data);
   }
   function _clearFormData() {
-        $scope.pat.id = null;
-        $scope.pat.name = "";
-        $scope.pat.idcard = "";
-        $scope.pat.address = "";
-        $scope.pat.birthday = "";
-        $scope.pat.phone = "";
+        $scope.patient.name = "";
+        $scope.patient.idcard = "";
+        $scope.patient.address = "";
+        $scope.patient.birthday = "";
+        $scope.patient.phone = "";
     };
 });

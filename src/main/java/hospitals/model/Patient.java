@@ -1,6 +1,6 @@
 package hospitals.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,7 +23,7 @@ public class Patient {
 	private String idcard;
 
 	@Column(name = "birthday")
-	private String birthday;
+	private Date birthday;
 	
 	@Column(name = "address")
 	private String address;
@@ -35,7 +35,7 @@ public class Patient {
 		
 	}
 	
-	public Patient(String name, String idcard, String birthday, String address, String phone) {
+	public Patient(String name, String idcard, Date birthday, String address, String phone) {
 		this.name = name;
 		this.idcard = idcard;
 		this.birthday = birthday;
@@ -67,11 +67,11 @@ public class Patient {
 		this.idcard = idcard;
 	}
 
-	public String getBirthday() {
+	public Date getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(String birthday) {
+	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
 

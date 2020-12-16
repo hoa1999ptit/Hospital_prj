@@ -10,10 +10,10 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-	<script src="../app/controller.js"></script>
+	<script src="../app/Nurse.js"></script>
 </head>
 
-<body>
+<body ng-app="NurseManagement" ng-controller="NurseController">
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
 		<div class="container">
@@ -54,8 +54,6 @@
 				style="margin-bottom: 20px">
 				Add Nurse
 			</button>
-			<button type="button" class="btn btn-dark" style="margin-bottom: 20px;">Get All
-				Nurses</button>
 			<!-- The Modal -->
 			<div class="modal" id="myModal1">
 				<div class="modal-dialog">
@@ -63,7 +61,7 @@
 
 						<!-- Modal Header -->
 						<div class="modal-header">
-							<h4 class="modal-title">Add Patient</h4>
+							<h4 class="modal-title">Add Nurse</h4>
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
 						</div>
 
@@ -73,38 +71,38 @@
 							<div class="form-group">
 								<label class="control-label">Name</label>
 								<div>
-									<input type="text" class="form-control input-lg" value="">
+									<input type="text" ng-model="nurse.name" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 								<label class="control-label">Adress</label>
 								<div>
-									<input type="text" class="form-control input-lg" value="">
+									<input type="text" ng-model="nurse.address" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 								<label class="control-label">ID Card</label>
 								<div>
-									<input type="text" class="form-control input-lg" value="">
+									<input type="text" ng-model="nurse.idcard" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 								<label class="control-label">Birthday</label>
 								<div>
-									<input type="date" class="form-control input-lg" value="">
+									<input type="date" ng-model="nurse.birthday" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 								<label class="control-label">Phone</label>
 								<div>
-									<input type="text" class="form-control input-lg" value="">
+									<input type="text" ng-model="nurse.phone" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 								<label class="control-label">Seniority</label>
 								<div>
-									<input type="text" class="form-control input-lg" value="">
+									<input type="text" ng-model="nurse.seniority" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 								<label class="control-label">Literacy</label>
 								<div>
-									<input type="text" class="form-control input-lg" value="">
+									<input type="text" ng-model="nurse.literacy" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 							</div>
 						</div>
 
 						<!-- Modal footer -->
 						<div class="modal-footer">
-							<button type="button" class="btn btn-danger" data-dismiss="modal">Save</button>
+							<button type="button" ng-click="create()" class="btn btn-danger" data-dismiss="modal">Save</button>
 							<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 						</div>
 
@@ -118,7 +116,7 @@
 
 						<!-- Modal Header -->
 						<div class="modal-header">
-							<h4 class="modal-title">Add Patient</h4>
+							<h4 class="modal-title">Add Nurse</h4>
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
 						</div>
 
@@ -128,38 +126,38 @@
 							<div class="form-group">
 								<label class="control-label">Name</label>
 								<div>
-									<input type="text"class="form-control input-lg" value="">
+									<input type="text" ng-model="nurse.name" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 								<label class="control-label">Adress</label>
 								<div>
-									<input type="text"class="form-control input-lg" value="">
+									<input type="text" ng-model="nurse.address" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 								<label class="control-label">ID Card</label>
 								<div>
-									<input type="text"class="form-control input-lg" value="">
+									<input type="text" ng-model="nurse.idcard" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 								<label class="control-label">Birthday</label>
 								<div>
-									<input type="date" class="form-control input-lg" value="">
+									<input type="date" ng-model="nurse.birthday" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 								<label class="control-label">Phone</label>
 								<div>
-									<input type="text"class="form-control input-lg" value="">
+									<input type="text" ng-model="nurse.phone" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 								<label class="control-label">Seniority</label>
 								<div>
-									<input type="text"class="form-control input-lg" value="">
+									<input type="text" ng-model="nurse.seniority" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 								<label class="control-label">Literacy</label>
 								<div>
-									<input type="text"class="form-control input-lg" value="">
+									<input type="text" ng-model="nurse.literacy" class="form-control input-lg" onfocus="this.value=''">
 								</div>
 							</div>
 						</div>
 
 						<!-- Modal footer -->
 						<div class="modal-footer">
-							<button type="button" class="btn btn-danger" data-dismiss="modal">Save</button>
+							<button type="button" ng-click = "submit()" class="btn btn-danger" data-dismiss="modal">Save</button>
 							<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 						</div>
 
@@ -183,17 +181,17 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+						<tr ng-repeat="nurse in nurses">
+							<td>{{ nurse.name }}</td>
+							<td>{{ nurse.address }}</td>
+							<td>{{ nurse.idcard }}</td>
+							<td>{{ nurse.birthday }}</td>
+							<td>{{ nurse.phone }}</td>
+							<td>{{ nurse.seniority }}</td>
+							<td>{{ nurse.literacy }}</td>
 							<td>
-								<button class="btn btn-danger" data-toggle="modal" data-target="#myModal2">Edit</button>
-								<button class="btn btn-danger">Delete</button>
+								<button class="btn btn-danger" ng-click="edit(nurse)" data-toggle="modal" data-target="#myModal2">Edit</button>
+								<button class="btn btn-danger" ng-click="delete(nurse)">Delete</button>
 							</td>
 						</tr>
 					</tbody>
