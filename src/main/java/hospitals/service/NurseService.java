@@ -10,20 +10,23 @@ import hospitals.repository.NurseRepository;
 
 @Service
 public class NurseService {
-@Autowired
+	@Autowired
 
-private NurseRepository nurseRepository;
+	private NurseRepository nurseRepository;
 
-public List<Nurse> getNurse(){
-	return nurseRepository.findAll();
-}
-public void addNurse(Nurse nurse) {
-	nurseRepository.save(nurse);
-}
-public void updateNurse(Nurse nurse) {
-	nurseRepository.save(nurse);
-}
-public void deleteNurse(long id) {
-	nurseRepository.deleteById(id);
-}
+	public List<Nurse> getNurse() {
+		return nurseRepository.findAll();
+	}
+
+	public void addNurse(Nurse nurse) {
+		nurseRepository.save(nurse);
+	}
+
+	public void updateNurse(Nurse nurse) {
+		nurseRepository.save(nurse);
+	}
+
+	public void deleteNurse(long id) {
+		nurseRepository.deleteById(id);
+	}
 }

@@ -33,6 +33,7 @@ public class MedicineController {
 		this.medicineRepo=medicineRepo;
 	}
 	
+	//lấy tất cả danh sách thuốc :
 	@GetMapping(value = "/getAll")
 	public List<Medicine> getAllMedicines(){
 		return medicineRepo.findAll();
@@ -46,17 +47,22 @@ public class MedicineController {
 		 //_medicine.setId(medicine.getId());
 		 _medicine.setName(medicine.getName());
 		 _medicine.setPrice(medicine.getPrice());
-
+		 _medicine.setForm(medicine.getForm());
+		 _medicine.setExpirationDate(medicine.getExpirationDate());
 		 medicineRepo.save(_medicine);
 		 return medicineRepo.findAll();
 		 
 	}
+	
+	//thêm thuốc
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public List<Medicine> create(@RequestBody Medicine medicine){
 		medicineRepo.save(medicine);
 
         return medicineRepo.findAll();
     }
+	
+	//xóa
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
 	@ApiMethod(description = "Remove the medicine with the provided ID from the database")
     public List<Medicine> removeMedicine(@ApiPathParam(name = "id") @PathVariable long id){

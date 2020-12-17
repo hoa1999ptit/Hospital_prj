@@ -6,7 +6,9 @@ app.controller("MedicineController", function ($scope, $http) {
   $scope.medicines = [];
   $scope.medicine = {
     name: "",
-    price: ""
+    price: "",
+    form:"",
+    expirationDate:""
   };
   var _id;
   _refreshMedicineData();
@@ -45,7 +47,8 @@ $scope.create = function() {
     _id = medicine.id;
     $scope.medicine.name = medicine.name;
     $scope.medicine.price = medicine.price;
-
+	$scope.medicine.form=medicine.form;
+	$scope.medicine.expirationDate= medicine.expirationDate;
   };
 
   function _refreshMedicineData() {
@@ -77,6 +80,7 @@ $scope.create = function() {
   function _clearFormData() {
         $scope.medicine.name = "";
         $scope.medicine.price = "";
-
+        $scope.medicine.form = "";
+ 		$scope.medicine.expirationDate = "";
     };
 });
